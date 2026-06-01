@@ -12,7 +12,7 @@ const stream = await client.chat.completions.create({
     },
     {
       role: "user",
-      content: "tell me about deepinder goyal founder of  zomato in hinglish",
+      content: "tell me about deepinder goyal founder of zomato and only give me based on 2026 data in hinglish ",
     },
   ],
 });
@@ -24,3 +24,4 @@ for await (const chunk of stream) {
   }
   previous_Chunk += delta
 }
+ 
