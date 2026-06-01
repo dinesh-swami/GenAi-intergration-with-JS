@@ -7,7 +7,7 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
-
+// todo: pass history dalni hai.
 function askQuetion(userInput) {
   return new Promise((resolve) => {
     rl.question(userInput, (answer) => {
@@ -18,7 +18,6 @@ function askQuetion(userInput) {
 
 while (true) {
   const userQuetion = await askQuetion("Ask Anything: ");
-  const previous_data = []
   if (userQuetion.toLowerCase() === "exit") {
     console.log("closing...");
     break;
@@ -28,6 +27,7 @@ while (true) {
     stream: true,
     messages: [
       { role: "system", content: ai_persona },
+
       {
         role: "user",
         content: userQuetion,
