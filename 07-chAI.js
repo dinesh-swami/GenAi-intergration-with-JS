@@ -12,16 +12,17 @@ const stream = await client.chat.completions.create({
     },
     {
       role: "user",
-      content: "tell me about deepinder goyal founder of zomato and only give me based on 2026 data in hinglish ",
+      content:
+        "tell me about deepinder goyal founder of zomato and only give me based on 2026 data in hinglish ",
     },
   ],
 });
 let previous_Chunk = null;
 for await (const chunk of stream) {
-  const delta = chunk.choices[0]?.delta?.content;
-  if(delta){
-    process.stdout.write(delta)
+  console.log("chunk",chunk);
+  const delta = chunk?.choices[0]?.delta?.content;
+  if (delta) {
+    process.stdout.write(delta);
   }
-  previous_Chunk += delta
+  previous_Chunk += delta;
 }
- 

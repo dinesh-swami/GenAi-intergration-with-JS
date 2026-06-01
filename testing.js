@@ -15,3 +15,14 @@
 //     }
 // })();
 
+import readline from "readline/promises";
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+const name = await rl.question("What is your name? ");
+
+console.log(`Hello ${name}`);
+
