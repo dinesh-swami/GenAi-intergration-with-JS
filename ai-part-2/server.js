@@ -40,5 +40,5 @@ app.delete("/todos/delete", async (req, res) => {
 
   return res.json("succesfull");
 });
-
+// update , and baki khud likhlo
 app.listen(3000, () => console.log("server running..."));
