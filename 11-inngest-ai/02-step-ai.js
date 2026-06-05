@@ -8,7 +8,7 @@ export const summmerizeAndThen = inngest.createFunction(
     triggers: [{ event: "chai-summerize" }],
   },
   async ({ event, step }) => {
-    const summery = await step.ai.infer("summerize", {
+    const sum = await step.ai.infer("summerize", {
       model: aiModel,
       body: {
         input: [
@@ -19,20 +19,23 @@ export const summmerizeAndThen = inngest.createFunction(
         ],
       },
     });
+    const SumResponse = sum.output[0].content[0].text;
 
-    const SumResponse = summery.output[0].content[0].text;
-
-    const translated = await step.ai.infer("translate", {
+    const tr = await step.ai.infer("translate", {
       model: aiModel,
       body: {
-        input: {
-          role: "user",
-          content: "transltate the following data to Hinglish" + SumResponse,
-        },
+        input: [
+          {
+            role: "user",
+            content: "transltate the following data to Hinglish" + SumResponse,
+          },
+        ],
       },
     });
-    const translation = translated.output[0].content[0].text;
-    console.log(translation)
-    return translation;
+
+    console.log("tr resposne : ", tr);
+    const translatedResponse =  tr.output[0].content[0].text;
+    console.log("translated response : ", translatedResponse);
+    return translatedResponse;
   },
 );
