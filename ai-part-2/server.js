@@ -1,5 +1,6 @@
-import express from "express";
 import "dotenv/config";
+console.log(process.env.INNGEST_DEV);
+import express from "express";
 import { createTodo, todos, deleteTodo } from "./store.js";
 import { serve } from "inngest/express";
 import { inngest } from "./ingest/client.js";

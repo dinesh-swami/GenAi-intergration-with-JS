@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import { Inngest } from "inngest";
 import { openaiResponses } from "@inngest/ai/models";
 import "dotenv/config";
@@ -10,4 +12,3 @@ export const aiModel = openaiResponses({
   apiKey: process.env.OPEN_AI_API_KEY,
   baseUrl: "https://api.groq.com/openai/v1",
 });
-console.log(aiModel);
